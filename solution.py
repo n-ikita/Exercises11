@@ -352,8 +352,9 @@ class Molecule(pygame.sprite.Sprite):
     def __init__(self, x, y, size, speed=1, color=(128, 128, 128)):
         pygame.sprite.Sprite.__init__(self)
         self.size = size
-        self.image = pygame.Surface((size, size))
-        self.image.fill(color)
+        self.color = color
+        self.image = pygame.Surface((size, size), pygame.SRCALPHA)
+        pygame.draw.circle(self.image, self.color, (self.size/2, self.size/2), self.size/2)
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
         self.speed = speed
